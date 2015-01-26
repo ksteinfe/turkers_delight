@@ -3,7 +3,7 @@ The instructions shown here will guide you through the installation of Python an
 
 ## Python
 1. [Download](https://www.python.org/download/releases/2.7.8/) and install python 2.7.8 
-3. Now we'll set the system paths. This will let our computer know where to find the Python executeable file so that we may easily run Python from the command line.
+2. Now we'll set the system paths. This will let our computer know where to find the Python executeable file so that we may easily run Python from the command line.
   * Open the Environment Variables Dialog
     * Right-Click on "My Computer" or "This PC" and select **Properties**
     * The following dialog will appear. Click on "Advanced System Settings" as shown below.
@@ -17,12 +17,12 @@ The instructions shown here will guide you through the installation of Python an
   * System variables under PATH should include:**C:\Python27;C:\Python27\Scripts;C:\Python27\Tools\Scripts;**
 
 ## Module Installers
-2. [Download](https://pypi.python.org/pypi/setuptools) and run ez_setup, the documentation for which may be found [here](https://pythonhosted.org/setuptools/easy_install.html)
-4. easy_install pip (python installs python)
+1. [Download](https://pypi.python.org/pypi/setuptools) and run ez_setup, the documentation for which may be found [here](https://pythonhosted.org/setuptools/easy_install.html)
+2. easy_install pip (python installs python)
  
 ## Dependencies
-5. easy_install selenium (project site http://docs.seleniumhq.org/projects/webdriver/)
-6. easy_install pillow (project site https://pillow.readthedocs.org/ source on git )
-7. easy_install beautifulsoup4 (project site http://www.crummy.com/software/BeautifulSoup/)
-8. easy_install lxml (additional parser for beautiful soup)
-9. easy_install html5parser (additional parser for beautiful soup)
+1. easy_install selenium (project site http://docs.seleniumhq.org/projects/webdriver/)
+2. easy_install pillow (project site https://pillow.readthedocs.org/ source on git )
+3. easy_install beautifulsoup4 (project site http://www.crummy.com/software/BeautifulSoup/)
+4. easy_install lxml (additional parser for beautiful soup)
+5. easy_install html5parser (additional parser for beautiful soup)
