@@ -3,6 +3,10 @@ Python Installation Requirements
 1. [Download](https://www.python.org/download/releases/2.7.8/) and install python 2.7.8 
 2. [Download](https://pypi.python.org/pypi/setuptools) and run ez_setup, the documentation for which may be found [here](https://pythonhosted.org/setuptools/easy_install.html)
 3. Make sure to set the system paths. System Properties >> Advanced >> Environment Variables
+  * Open the Environment Variables Dialog
+    * Right-Click on "My Computer" or "This PC" and select **Properties**
+    * The following dialog will appear, ![system_settings](https://github.com/ksteinfe/turkers_delight/blob/master/Installation%20and%20Setup/Python/img/system_settings.png)
+    * something else
   * Don't delete anything.
   * User variables under PATH should include: **%APPDATA%\Python\Scripts;.;C:\Python\Scripts;**
   * and under PYPATH:**;C:\Python27;C:\Python27\Scripts**
