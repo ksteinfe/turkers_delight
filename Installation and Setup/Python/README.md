@@ -12,11 +12,10 @@ The instructions shown here will guide you through the installation of Python an
     * ![system_properties](https://github.com/ksteinfe/turkers_delight/blob/master/Installation%20and%20Setup/Python/img/system_properties.png)
     * Finally, we've arrived at the Environment Variables dialog shown below. This dialog show us a number of variables, typically paths or locations of important files or folders, used by various pieces of software on your computer. Mucking around in here could break software that you already have installed that rely on these variables, so **be careful** and don't delete anything that is already here! There are two types of variables shown, System Variables and User Variables. We should only mess with the latter, user variables. Each variable may contain multiple paths separated by semicolons. Notice the variable on my computer named PYTHONPATH, shown below, includes "C:\Windows" followed by a semicolon, follwed by "C:\Windows\System32\...". That's two paths associated with the variable PYTHONPATH. To edit an existing variable, select it and then click "Edit" (marked below in red). To create a new variable, just click "New..." (marked below in blue).
     * ![environment_variables](https://github.com/ksteinfe/turkers_delight/blob/master/Installation%20and%20Setup/Python/img/environment_variables.png)
-    * After clicking "Edit" or "New", the Edit System Variable dialog will appear (as seen below).
+    * After clicking "Edit" or "New", the Edit System Variable dialog will appear (as seen below). Variable strings can be quite long and the available space to edit in the dialog box is limited, so I sometimes copy-paste the entire value into Notepad or something simliar to do my edits, such that I don't miss a semicolon. As you edit, be sure to separate all paths (both new and exsisting) with semicolons.
     *![edit_user_variable](https://github.com/ksteinfe/turkers_delight/blob/master/Installation%20and%20Setup/Python/img/edit_user_variable.png)
-  * User variables under PATH should include: **%APPDATA%\Python\Scripts;.;C:\Python\Scripts;**
-  * and under PYPATH:**;C:\Python27;C:\Python27\Scripts**
-  * System variables under PATH should include:**C:\Python27;C:\Python27\Scripts;C:\Python27\Tools\Scripts;**
+  * User variables under PATH should include:**C:\Python27;C:\Python27\Scripts;C:\Python27\Tools\Scripts;**
+  * and under PYPATH:**C:\Python27;C:\Python27\Scripts;**
 
 ## Module Installers
 1. [Download](https://pypi.python.org/pypi/setuptools) and run ez_setup, the documentation for which may be found [here](https://pythonhosted.org/setuptools/easy_install.html)
