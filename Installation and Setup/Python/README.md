@@ -1,17 +1,26 @@
-Python Installation Requirements
+# Installing Python and Requied Modules
+The instructions shown here will guide you through the installation of Python and all the required modules that we'll be using for this class.
 
+## Python
 1. [Download](https://www.python.org/download/releases/2.7.8/) and install python 2.7.8 
-2. [Download](https://pypi.python.org/pypi/setuptools) and run ez_setup, the documentation for which may be found [here](https://pythonhosted.org/setuptools/easy_install.html)
-3. Make sure to set the system paths. System Properties >> Advanced >> Environment Variables
+3. Now we'll set the system paths. This will let our computer know where to find the Python executeable file so that we may easily run Python from the command line.
   * Open the Environment Variables Dialog
     * Right-Click on "My Computer" or "This PC" and select **Properties**
-    * The following dialog will appear, ![system_settings](https://github.com/ksteinfe/turkers_delight/blob/master/Installation%20and%20Setup/Python/img/system_settings.png)
-    * something else
-  * Don't delete anything.
+    * The following dialog will appear. Click on "Advanced System Settings" as shown below.
+    * ![system_settings](https://github.com/ksteinfe/turkers_delight/blob/master/Installation%20and%20Setup/Python/img/system_settings.png)
+    * Now we'll see the Advanced System Properties dialog. Click on "Environment Variables" as shown below.
+    * ![system_properties](https://github.com/ksteinfe/turkers_delight/blob/master/Installation%20and%20Setup/Python/img/system_properties.png)
+    * Finally, we've arrived at the Environment Variables dialog. This dialog show us a number of variables, typically paths or locations of important files or folders, used by various pieces of software on your computer. Mucking around in here could break software that you already have installed that rely on these variables, so **be careful** and don't delete anything that is already here! There are two types of variables shown, System Variables and User Variables. We should only mess with the latter, user variables. Each variable may contain multiple paths separated by semicolons. Notice the variable on my computer named PYTHONPATH, shown below, includes "C:\Windows" followed by a semicolon, follwed by "C:\Windows\System32\...". That's two paths associated with the variable PYTHONPATH. To edit an existing variable, select it and then click "Edit". To create a new variable, just click "New...".
+    * ![environment_variables](https://github.com/ksteinfe/turkers_delight/blob/master/Installation%20and%20Setup/Python/img/environment_variables.png)
   * User variables under PATH should include: **%APPDATA%\Python\Scripts;.;C:\Python\Scripts;**
   * and under PYPATH:**;C:\Python27;C:\Python27\Scripts**
   * System variables under PATH should include:**C:\Python27;C:\Python27\Scripts;C:\Python27\Tools\Scripts;**
+
+## Module Installers
+2. [Download](https://pypi.python.org/pypi/setuptools) and run ez_setup, the documentation for which may be found [here](https://pythonhosted.org/setuptools/easy_install.html)
 4. easy_install pip (python installs python)
+ 
+## Dependencies
 5. easy_install selenium (project site http://docs.seleniumhq.org/projects/webdriver/)
 6. easy_install pillow (project site https://pillow.readthedocs.org/ source on git )
 7. easy_install beautifulsoup4 (project site http://www.crummy.com/software/BeautifulSoup/)
