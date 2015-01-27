@@ -3,6 +3,7 @@ The instructions shown here will guide you through the installation of Python an
 
 ## Python
 1. [Download](https://www.python.org/download/releases/2.7.8/) and install python 2.7.8 
+ * By default, Python should install to **C:\Python27**, which we will refer to below as your "Python Installation Directory". If you choose to install to a different location, please adjust the following instructions accordingly. 
 2. Set the system paths, which will let our computer know where to find the Python executeable file so that we may easily run Python from the command line.
   * Open the Environment Variables Dialog
     * Right-Click on "My Computer" or "This PC" and select **Properties**
@@ -15,7 +16,7 @@ The instructions shown here will guide you through the installation of Python an
     * After clicking "Edit" or "New", the Edit System Variable dialog will appear (as seen below). Variable strings can be quite long and the available space to edit in the dialog box is limited, so I sometimes copy-paste the entire value into Notepad or something simliar to do my edits, such that I don't miss a semicolon. As you edit, be sure to separate all paths (both new and exsisting) with semicolons.
     *![edit_user_variable](https://github.com/ksteinfe/turkers_delight/blob/master/Installation%20and%20Setup/Python/img/edit_user_variable.png)
   * User variables under PATH should include:**C:\Python27;C:\Python27\Scripts;C:\Python27\Tools\Scripts;**
-  * and under PYPATH:**C:\Python27;C:\Python27\Scripts;**
+  * and under PYTHONPATH:**C:\Python27;C:\Python27\Scripts;**
 
 ## Module Installers
 1. [Download](https://pypi.python.org/pypi/setuptools) and run ez_setup, the documentation for which may be found [here](https://pythonhosted.org/setuptools/easy_install.html)
