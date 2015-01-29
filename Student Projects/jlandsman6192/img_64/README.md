@@ -4,7 +4,7 @@ Upload your competed collection of 64 images here, and describe them in this tex
 
 I am working on a project this semester for Civil Engineering 209: Design for Sustainable Communities.  My team will be trying to solve the problem of 
 overcrowding in Pune, India by designing affordable urban housing that is scalable, safe, and responsive to energy and environmental concerns, while still
-remaining culturally contextutual.
+remaining culturally contextual.
 
 To assemble my collection of 64 images, I searched for images that depict the typical overcrowded living situations in Indian housing.
 I used the following filters in Google:
