@@ -1,17 +1,16 @@
-import requests, json, urllib, cStringIO
+import requests, json, urllib
 from bs4 import BeautifulSoup
-from PIL import Image
 
 save_path='imgs/'
-download_images = False
-limit_results = 2000
+download_images = True
+limit_results = 4
 
 """
 Get the HTML of the main page and parse in BeautifulSoup
 """
 url = 'designguggenheimhelsinki.org/stageonegallery/view/'
 rdata = requests.get('http://'+ url).text
-soup=BeautifulSoup(rdata, "html5lib")
+soup = BeautifulSoup(rdata, "html5lib")
 
 
 """
@@ -56,7 +55,7 @@ print "found two images on each of ", len(designs), " pages"
 Write the summary JSON
 """
 with open('_summary.json', 'w') as j:
-	j.write(json.dumps(designs))
+	j.write(json.dumps(designs,indent=4))
 	j.close()
 
             

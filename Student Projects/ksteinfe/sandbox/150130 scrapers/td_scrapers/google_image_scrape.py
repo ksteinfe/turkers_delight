@@ -14,8 +14,8 @@ def scrape(searchString, limit,scroll_num=3,subdir="img"):
     import time, requests, json, urllib, cStringIO, ast
     
     
-    #browser = webdriver.Chrome()
-    browser = webdriver.Firefox()
+    browser = webdriver.Chrome()
+    #browser = webdriver.Firefox()
     
     
     searchterm = searchString #what you would put in the search box as a string
