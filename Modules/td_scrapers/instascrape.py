@@ -1,8 +1,9 @@
 
 
 
-def scrape(searchString, limit):
-    
+def scrape(searchString, limit,subdir="img"):
+    import os
+    if not os.path.exists(subdir): os.makedirs(subdir)
     
     from selenium import webdriver
     from bs4 import BeautifulSoup
@@ -61,7 +62,7 @@ def scrape(searchString, limit):
         if (len(Instaimage) > 0):
             imglink = Instaimage[0]['src']
             #print imglink
-        filename = "Images/Instagram_" + tag + "_"  + result['id'] + ".jpg"
+        filename = subdir+"/Instagram_" + tag + "_"  + result['id'] + ".jpg"
         #print filename
         urllib.urlretrieve(imglink,filename)
         onions = stew.findAll('a', {'class' : 'unTag'})
@@ -105,7 +106,7 @@ def scrape(searchString, limit):
 
         print meta
         print results[0]
-        index_filename = 'Imglist_IG_' + tag + '.json'
+        index_filename = subdir+'/_imglist_inst_' + tag + '.json'
         with open(index_filename, 'w') as j:
             j.write(json.dumps(results))
             j.close()

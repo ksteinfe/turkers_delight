@@ -1,5 +1,8 @@
-def scrape(searchString, limit):
-    
+
+def scrape(searchString, limit,scroll_num=3,subdir="img"):
+    import os
+    if not os.path.exists(subdir): os.makedirs(subdir)
+        
     if (limit < 800):
         limited = True
     else :
@@ -9,7 +12,12 @@ def scrape(searchString, limit):
     from bs4 import BeautifulSoup
     from PIL import Image
     import time, requests, json, urllib, cStringIO, ast
+    
+    
+    #browser = webdriver.Chrome()
     browser = webdriver.Firefox()
+    
+    
     searchterm = searchString #what you would put in the search box as a string
     searchcount = "1000" #the number of results you would like as a string
     url = "https://www.google.com/search?q={0}&num={1}&source=lnms&tbm=isch&sa=X".format(searchterm, searchcount)
@@ -17,13 +25,12 @@ def scrape(searchString, limit):
     browser.get(url)
 
     #driver = webdriver.Firefox()
-    scroll_num = 3
     for n in range(scroll_num):
-        time.sleep(10)
+        time.sleep(5)
         browser.execute_script("window.scrollTo(0, document.body.scrollHeight);")
-        time.sleep(2)
+        time.sleep(1)
         browser.execute_script("window.scrollTo(0, document.body.scrollHeight);")
-        time.sleep(10)
+        time.sleep(5)
         try:
             browser.find_element_by_id("smb").click()
         except:
@@ -60,7 +67,7 @@ def scrape(searchString, limit):
             con = urllib.urlopen(address)
             file = cStringIO.StringIO(con.read())
             img = Image.open(file);
-            filename = "Images/Google_" + searchterm + "_"  + result['id'] + "." +str(img.format)
+            filename = subdir+"/Google_" + searchterm + "_"  + result['id'] + "." +str(img.format)
             print filename
             urllib.urlretrieve(address,filename)
         except:
@@ -74,14 +81,16 @@ def scrape(searchString, limit):
             
 
     print error_report
-    index_filename = 'Imglist_GI_' + searchterm + '.json'
+    #index_filename = 'Imglist_GI_' + searchterm + '.json'
+    index_filename = subdir+'/_imglist_goog_' + searchterm + '.json'
 
     with open(index_filename, 'w') as j:
         j.write(json.dumps(results))
         j.close()
         
         
-    index_filename = 'Imglist_GI_' + searchterm + '_ErrorReport.json'
+    #index_filename = 'Imglist_GI_' + searchterm + '_ErrorReport.json'
+    index_filename = subdir+'/_imglist_goog_' + searchterm + '_errors.json'
     with open(index_filename, 'w') as k:
         k.write(json.dumps(error_report))
         k.close()

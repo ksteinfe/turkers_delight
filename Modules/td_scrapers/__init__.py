@@ -1,19 +1,19 @@
 import glob, json, colorsys
 from PIL import Image, ImageDraw
 
-def collate():
+def collate(subdir="img"):
     #Collate.py looks at a culled image folder and the available index jsons and creates a new master json.
     import glob, json, re
 
     #new dict add {"filename": filename}
     #load all the img names into an array
-    dir = "Images/*"
+    dir = subdir+"/*"
 
-    Filenames = [g[7:] for g in (glob.glob(dir))]
-    IndexFilenames = [j for j in glob.glob('*.json') if ('ErrorReport' , 'Collated' not in j)]
+    Filenames = [g[4:] for g in (glob.glob(dir))]
+    IndexFilenames = [j for j in glob.glob(subdir+'/*.json') if ('errors' , 'culled' not in j)]
     Indices_Collated = []
     Indices_Culled = []
-
+    
     for ifilename in IndexFilenames:
         with open (ifilename) as json_file:
             index_items = json.load(json_file)
@@ -24,21 +24,21 @@ def collate():
     print len (Filenames)
 
     for filename in Filenames:
-        #print filename
-        namechunks = re.split('_', filename)
-        #print namechunks
-        type = unicode(namechunks[0])
-        keyword = unicode(namechunks[1])
-        id = unicode(namechunks[2].translate(None, 'jpgifnbmeJPGIFNBME.'))
-        #print id
-        
-        for c in Indices_Collated:
-            if (c['type'] == type and c['keyword'] == keyword and c['id'] == id):
-                Indices_Culled.append(c) 
-                c['filename'] = filename
-    print Indices_Collated[0]
+        if ('.json' not in filename):
+            namechunks = re.split('_', filename)
+            print namechunks
+            type = unicode(namechunks[0])
+            keyword = unicode(namechunks[1])
+            id = unicode(namechunks[2].translate(None, 'jpgifnbmeJPGIFNBME.'))
+            #print id
+            
+            for c in Indices_Collated:
+                if (c['type'] == type and c['keyword'] == keyword and c['id'] == id):
+                    Indices_Culled.append(c) 
+                    c['filename'] = filename
+    #print Indices_Collated[0]
     print len (Indices_Culled)
-    with open ('Culled_Index.json', 'w') as json_file:
+    with open (subdir+'/culled_index.json', 'w') as json_file:
         json_file.write(json.dumps(Indices_Culled))
         json_file.close()
     
@@ -52,14 +52,18 @@ def calc_rgb_avg(im):
     rgba_avg = [ sum([wght(tup,n) for tup in rgba])/sum([tup[3]/255.0 for tup in rgba]) for n in range(3)]
     return (int(rgba_avg[0]),int(rgba_avg[1]),int(rgba_avg[2]))
 
-def process_for_web():
-    Indexfile = 'Culled_Index.json'
+def process_for_web(subdir="img",webdir="webimg"):
+    import os
+    if not os.path.exists(subdir): os.makedirs(subdir)
+    if not os.path.exists(webdir): os.makedirs(webdir)
+    
+    Indexfile = subdir+'/culled_index.json'
     with open (Indexfile) as j:
         img_index = json.load(j)
         j.close()
 
-    src_dir  = 'Images/'
-    save_dir = 'webImages/'
+    src_dir  = subdir+'/'
+    save_dir = webdir+'/'
 
     for pic_num, item in enumerate (img_index):
         print pic_num
@@ -74,7 +78,6 @@ def process_for_web():
         print IMG.size
         img_wh = IMG.size
         img_w, img_h = float(img_wh[0]), float(img_wh[1])
-        print img_w, ", ", img_h
         sqs = 450
         if (img_w or img_h > sqs):
             if (img_w > img_h) : size = sqs, int(sqs*img_h/img_w)
@@ -89,12 +92,13 @@ def process_for_web():
         while (len(pic_str)<4) : pic_str  = '0' + pic_str
         item['filename'] = pic_str + '.jpg'
         filepath = save_dir + pic_str + '.jpg'
+        print filepath
         IMG.save(filepath, "JPEG") 
         #close IMG
-        IMG.close()
+        #IMG.close()
 
 
-    new_filename = 'Web_Index.json'
+    new_filename = webdir+'/web_index.json'
     #overwrite file with new information
     with open (new_filename, 'w') as k:
         k.write(json.dumps(img_index))
