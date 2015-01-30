@@ -95,7 +95,7 @@ def process_for_web(subdir="img",webdir="webimg"):
         print filepath
         IMG.save(filepath, "JPEG") 
         #close IMG
-    IMG.close()
+        #IMG.close()
 
 
     new_filename = webdir+'/web_index.json'
