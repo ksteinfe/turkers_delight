@@ -1,0 +1,63 @@
+[
+  {
+    "keyword": "running", 
+    "retrieved": "Mon, 02 Feb 2015 01:50:41 +0000", 
+    "other-tags": [
+      "running", 
+      "special", 
+      "beerun", 
+      "cerrodeguadalupe", 
+      "happy"
+    ], 
+    "link": "http://iconosquare.com/p/886639084255101963_273580048", 
+    "location": null, 
+    "visited": true, 
+    "post-date": "9.00 pm 12/29/2014", 
+    "type": "Instagram", 
+    "id": "0"
+  }, 
+  {
+    "keyword": "running", 
+    "retrieved": "Mon, 02 Feb 2015 01:50:41 +0000", 
+    "other-tags": [
+      "runsurfcity", 
+      "running", 
+      "run", 
+      "finishline", 
+      "family", 
+      "halfmarathon", 
+      "runners"
+    ], 
+    "link": "http://iconosquare.com/p/911185582251122129_3745582", 
+    "location": {
+      "latitude": "33.658181598", 
+      "longitude": "-118.001140981"
+    }, 
+    "visited": true, 
+    "post-date": "5.50 pm 2/1/2015", 
+    "type": "Instagram", 
+    "id": "1"
+  }, 
+  {
+    "keyword": "running", 
+    "retrieved": "Mon, 02 Feb 2015 01:50:41 +0000", 
+    "other-tags": [
+      "running", 
+      "california", 
+      "supersunday", 
+      "superbowlsunday", 
+      "fitness", 
+      "sundayfunday", 
+      "missionbay"
+    ], 
+    "link": "http://iconosquare.com/p/911185314494695617_189780145", 
+    "location": {
+      "latitude": "32.794308333", 
+      "longitude": "-117.207141667"
+    }, 
+    "visited": true, 
+    "post-date": "5.49 pm 2/1/2015", 
+    "type": "Instagram", 
+    "id": "2"
+  }
+]
