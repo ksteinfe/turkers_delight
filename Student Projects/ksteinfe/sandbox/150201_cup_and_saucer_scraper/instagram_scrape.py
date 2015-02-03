@@ -7,4 +7,4 @@ Enter any valid instagram hashtag, you will get images in the most recent appear
 Make sure your limit is under or equal to the total amount of images.
 """
 #IG_scraper.scrape(searchstring, limit)
-IG_scraper.scrape("teasets", 500)
+IG_scraper.scrape("coffeecup", 500)
