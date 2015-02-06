@@ -8,5 +8,5 @@ you can enter any search string as it would appear as a url param
 "runners" or "runners+legs" etc.
 """
 #Google_scraper.scrape(searchstring, limit)
-Google_scraper.scrape("singapore+hawker", 1024)
+Google_scraper.scrape("hawker+stall", 217)
 
