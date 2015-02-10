@@ -1,0 +1,34 @@
+
+.thumb{
+    height: 15px;
+    width: 15px;
+}
+.row{
+    height: 15px;
+}
+
+#thumb_wrapper{
+    float: left;
+    height: 480px;
+    width: 480px;
+}
+#large_wrapper {
+    float: left;
+    padding: 15px;    
+    height: 450px;
+    width: 450px;
+}
+.large_image{
+    margin-bottom: 30px;
+}
+
+.img_id_link{
+    text-decoration: none;
+    color: inherit;
+    font-weight: bolder;
+    font-size: larger;
+}
+
+.img_id_link:hover{
+    color: red;
+}
