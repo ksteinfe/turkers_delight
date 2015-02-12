@@ -1,6 +1,8 @@
-[
+img_json_data = [
     {
-        "id":"001",
+        "id":"00000",
+        "filename_th": "00000_th.jpg",
+        "filename": "00000.jpg",
         "sepalLength": 0.1,    
         "sepalWidth": 0.5,    
         "petalLength": 0.4,    
@@ -8,7 +10,9 @@
         "species": "setosa"
     },
     {
-        "id":"002",
+        "id":"00001",
+         "filename_th": "00001_th.jpg",
+        "filename": "00001.jpg",
     "sepalLength": 0.9,    
         "sepalWidth": 0.0,    
         "petalLength": 0.4,    
@@ -16,7 +20,9 @@
         "species": "setosa"
     },
     {
-        "id":"003",
+        "id":"00002",
+        "filename_th": "00002_th.jpg",
+        "filename": "00002.jpg",
     "sepalLength": 0.7,    
         "sepalWidth": 0.2,    
         "petalLength": 0.3,    
@@ -24,7 +30,9 @@
         "species": "setosa"
     },
     {
-            "id":"004",
+         "id":"00003",
+        "filename_th": "00003_th.jpg",
+        "filename": "00003.jpg",
         "sepalLength": 0.6,    
         "sepalWidth": 0.1,    
         "petalLength": 0.5,    

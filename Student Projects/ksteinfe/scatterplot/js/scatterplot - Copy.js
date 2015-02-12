@@ -1,40 +1,10 @@
-<!DOCTYPE html>
-<meta charset="utf-8">
-<style>
+var radius = 10.0;
 
-body {
-  font: 10px sans-serif;
-}
-
-.axis path,
-.axis line {
-  fill: none;
-  stroke: #999;
-  shape-rendering: crispEdges;
-}
-
-.dot {
-  stroke: #000;
-  fill: #999;
-}
-
-</style>
-<body>
-<script src="js/d3.v3.min.js"></script>
-<select id="x_axis_select" name="x_axis_select">
-    <option value ="sepalWidth" selected>s width</option>
-    <option value ="sepalLength">s length</option>
-    <option value ="petalLength">p length</option>
-</select>​
-<select id="y_axis_select" name="y_axis_select">
-    <option value ="sepalWidth" selected>s width</option>
-    <option value ="sepalLength">s length</option>
-    <option value ="petalLength">p length</option>
-</select>​
-<script>
 var xDropdown = d3.select("#x_axis_select");
 var yDropdown = d3.select("#y_axis_select");
-var radius = 10.0;
+var xInitSelect = xDropdown.node().options[xDropdown.node().selectedIndex].value;
+var yInitSelect = yDropdown.node().options[yDropdown.node().selectedIndex].value;
+
 
 var margin = {top: 20, right: 20, bottom: 30, left: 40},
     width = 450 - margin.left - margin.right,
@@ -63,41 +33,40 @@ svg.append("g")
 svg.append("g")
   .attr("class", "y axis")
   .call(yAxis);
-      
+
+
+svg.selectAll(".dot").data(json)
+.enter().append("circle")
+  .attr("class", "dot")
+  .attr("id",function(d) { return 'dot_'+d["id"]; })
+  .attr("r", radius)
+  .attr("cx", function(d) { return x(d[xInitSelect]); })
+  .attr("cy", function(d) { return y(d[yInitSelect]); })
+  //.style("fill", function(d) { return color(d.species); })
+  ;
+  
+/*      
 var json = d3.json("data.json", function(error, json) {
     if (error) return console.warn(error);   
-    var xSelect = xDropdown.node().options[xDropdown.node().selectedIndex].value;
-    var ySelect = yDropdown.node().options[yDropdown.node().selectedIndex].value;
 
-    svg.selectAll(".dot")
-      .data(json)
-    .enter().append("circle")
-      .attr("class", "dot")
-      .attr("id",function(d) { return 'dot_'+d["id"]; })
-      .attr("r", radius)
-      .attr("cx", function(d) { return x(d[xSelect]); })
-      .attr("cy", function(d) { return y(d[ySelect]); })
-      //.style("fill", function(d) { return color(d.species); })
-      ;
-}); 
+
+});*/
     
 var change = function(){
     var xSelect = xDropdown.node().options[xDropdown.node().selectedIndex].value;
     var ySelect = yDropdown.node().options[yDropdown.node().selectedIndex].value;
     //alert(d3.select("#svg_graph").select("#ksteinfe").attr("r"))
-    var json = d3.json("data.json", function(error, json) {
-        if (error) return console.warn(error);
+    //var json = d3.json("data.json", function(error, json) {
+        //if (error) return console.warn(error);
         json.forEach(function(d) {
             svg.select('#dot_'+d["id"])
             .transition().attr("cx",x(d[xSelect]))
             .transition().attr("cy",y(d[ySelect]))
         });
         
-    });
+    //});
         
 }    
 xDropdown.on("change", function(){change();});
 yDropdown.on("change", function(){change();});
 
-
-</script>
