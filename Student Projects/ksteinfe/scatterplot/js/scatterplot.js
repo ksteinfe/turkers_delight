@@ -37,7 +37,10 @@ svg.append("g")
 svg.append("g")
   .attr("class", "y axis")
   .call(yAxis);
+  
 
+var svgDotBack = svg.append("g").attr("id","svg_dots_back");
+var svgDotFront = svg.append("g").attr("id","svg_dots_front");
 
 var isValid = function(img){
     if (img["pleasantness"] == undefined) {return false;}
@@ -48,7 +51,7 @@ var isValid = function(img){
 
 index_viz_data.forEach(function(d) {
     if (isValid(d)){
-        svg.append("circle")
+        svgDotBack.append("circle")
         .attr("class", "dot")
         .attr("id",'dot_'+d["guid"])
         .attr("r", radius)
