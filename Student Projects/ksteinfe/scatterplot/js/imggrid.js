@@ -1,4 +1,18 @@
 
+
+function highlightDot(idInfo){
+    index_viz_data.forEach(function(d) {
+        if (true) {
+            svg.select('#dot_'+d["guid"])
+            .style("fill", function(d) { return d3.rgb(255, 0, 0); })
+        } else {
+        
+        }
+    });
+}
+
+
+
 function showDiv(idInfo) {
     alert(idInfo);
     var sel = document.getElementById('large_wrapper').getElementsByTagName('div');
@@ -6,12 +20,38 @@ function showDiv(idInfo) {
     document.getElementById('large_image_'+idInfo).style.display = 'block';
 }
 
+
+var selNodeY = document.createElement('select');
+selNodeY.id = 'y_axis_select'; selNodeY.name = 'y_axis_select'; 
+var selNodeX = document.createElement('select');
+selNodeX.id = 'x_axis_select'; selNodeX.name = 'x_axis_select'; 
+
+index_viz_meta['plot_keys'].forEach(function(d) {  
+    var optionNode = document.createElement("option");
+    optionNode.setAttribute("value", d);
+    optionNode.innerHTML = d;
+    selNodeX.appendChild(optionNode);
+    
+    var optionNode = document.createElement("option");
+    optionNode.setAttribute("value", d);
+    optionNode.innerHTML = d;
+    selNodeY.appendChild(optionNode);
+});
+
+document.getElementById('y_axis_drop_wrapper').appendChild(selNodeY);
+document.getElementById('x_axis_drop_wrapper').appendChild(selNodeX);
+
+
+
+
 var wrapNode = document.getElementById('thumb_wrapper');
-
-
-img_json_data.forEach(function(d) {
+index_viz_data.forEach(function(d) {
+    //Object.keys(index_viz['data']).forEach(function(imgkey, n) {
+    //imgdict = index_viz['data'][imgkey];
+    //alert(imgdict);
     var anchorNode = document.createElement('a');
-    anchorNode.onclick = function(){showDiv("FAKE")};
+    anchorNode.onclick = function(){showDiv(d["guid"])};
+    anchorNode.onmouseover = function(){highlightDot(d["guid"])};
     
     var imgNode = document.createElement("img");
     imgNode.src = "../img_1024/"+d['filename_th'];
@@ -24,9 +64,20 @@ img_json_data.forEach(function(d) {
 });
 
 /*
+
+<select id="y_axis_select" name="y_axis_select">
+    <option value ="sepalWidth" selected>s width</option>
+    <option value ="sepalLength">s length</option>
+    <option value ="petalLength">p length</option>
+</select>​
+
+
 <a href="#" onclick="showDiv('00000');return false">
 <img class="thumb" src="img_1024/00000_th.jpg">
 </a>
+    
+
+    
     
 <div id="large_image_00000" style="display:none;">
 <img class="large_image" src="img_1024/00000.jpg">

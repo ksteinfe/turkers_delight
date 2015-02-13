@@ -1,4 +1,6 @@
-var radius = 10.0;
+var radius = 3.0;
+var opacity = 0.25;
+var shakiness = 20;
 
 var xDropdown = d3.select("#x_axis_select");
 var yDropdown = d3.select("#y_axis_select");
@@ -9,18 +11,18 @@ var yInitSelect = yDropdown.node()
 
 
 var margin = {top: 20, right: 20, bottom: 30, left: 40},
-    width = 450 - margin.left - margin.right,
-    height = 450 - margin.top - margin.bottom;
+    width = 380 - margin.left - margin.right,
+    height = 380 - margin.top - margin.bottom;
 
-var x = d3.scale.linear().range([0, width]);
-var y = d3.scale.linear().range([height, 0]);
+var x = d3.scale.linear().range([10, width-10]);
+var y = d3.scale.linear().range([height-10, 10]);
 
 //var color = d3.scale.category10();
 
-var xAxis = d3.svg.axis().scale(x).orient("bottom");
-var yAxis = d3.svg.axis().scale(y).orient("left");
+var xAxis = d3.svg.axis().scale(x).orient("bottom").ticks(3);
+var yAxis = d3.svg.axis().scale(y).orient("left").ticks(3);
 
-var svg = d3.select("body").append("svg")
+var svg = d3.select("#svg_wrapper").append("svg")
     .attr("id","svg_graph")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
@@ -37,23 +39,47 @@ svg.append("g")
   .call(yAxis);
 
 
-svg.selectAll(".dot").data(img_json_data)
+var isValid = function(img){
+    if (img["pleasantness"] == undefined) {return false;}
+    if (img["buildingness"] == undefined) {return false;}
+    return true;
+    //((d[xSelect] >= 0) && (d[xSelect]) <= 1.0)&&((d[ySelect] >= 0) && (d[ySelect]) <= 1.0) && !isNaN(d[xSelect]) && !isNaN(d[ySelect]) 
+}  
+
+index_viz_data.forEach(function(d) {
+    if (isValid(d)){
+        svg.append("circle")
+        .attr("class", "dot")
+        .attr("id",'dot_'+d["guid"])
+        .attr("r", radius)
+        .attr("cx", x(d[xInitSelect])+Math.random()*shakiness)
+        .attr("cy", y(d[yInitSelect])+Math.random()*shakiness)
+        .style("opacity", opacity)
+    }
+
+});
+
+/*  
+svg.selectAll(".dot").data(index_viz_data)
 .enter().append("circle")
   .attr("class", "dot")
   .attr("id",function(d) { return 'dot_'+d["id"]; })
-  .attr("r", radius)
-  .attr("cx", function(d) { return x(d[xInitSelect]); })
-  .attr("cy", function(d) { return y(d[yInitSelect]); })
+  .attr("r", function(d) {  if (!isValid(d)) {return 10.0;} else {return radius;} })
+  .attr("cx", function(d) {   if (isValid(d)) {return x(d[xInitSelect])+Math.random()*shakiness} else {return 200;}; })
+  .attr("cy", function(d) {  if (isValid(d)) {return y(d[yInitSelect])+Math.random()*shakiness} else {return 200;};  })
+  .style("opacity", function(d) {  if (isValid(d)) {return opacity;} else {return 0.0;} })
   //.style("fill", function(d) { return color(d.species); })
   ;
-  
+*/  
 var change = function(){
     var xSelect = xDropdown.node().options[xDropdown.node().selectedIndex].value;
     var ySelect = yDropdown.node().options[yDropdown.node().selectedIndex].value;
-    img_json_data.forEach(function(d) {
-        svg.select('#dot_'+d["id"])
-        .transition().attr("cx",x(d[xSelect]))
-        .transition().attr("cy",y(d[ySelect]))
+    index_viz_data.forEach(function(d) {
+        if (isValid(d)) {
+            svg.select('#dot_'+d["guid"])
+            .transition().attr("cx",x(d[xSelect])+Math.random()*shakiness)
+            .transition().attr("cy",y(d[ySelect])+Math.random()*shakiness)
+        }
     });
 }    
 xDropdown.on("change", function(){change();});
