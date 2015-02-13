@@ -27,6 +27,16 @@ body {
     height: 12px;
 }
 
+span.clear { clear: left; display: block; }
+
+#content_wrapper{
+  width: 1280px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+}
+
 #thumb_wrapper{
     float: left;
     height: 384px;
